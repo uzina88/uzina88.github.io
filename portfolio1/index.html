@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>웹프로젝트</title>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <style>
+    
+    #page1 { background-image:url("./img/bg1.jpg"); }
+    #page2 { background-image:url("./img/bg2.jpg"); background-attachment:fixed; }
+    #page3 { background-image:url("./img/bg3.jpg"); }
+    #page4 { background-image:url("./img/bg4.jpg"); }
+    #page5 { background-image:url("./img/bg5.jpg"); background-attachment:fixed;  }
+    #page6 { background-image:url("./img/bg6.jpg"); }
+    #page7 { background-image:url("./img/bg7.jpg"); }
+    #page8 { background-image:url("./img/bg8.jpg"); background-attachment:fixed;  }
+    #page9 { background-image:url("./img/bg9.jpg"); }
+    #page10 { background-image:url("./img/bg10.jpg"); }
+
+    .vs { clear:both; width:100%; height:100%;  position:relative; overflow:hidden; }
+    .img_box { width: 400%; height:100%; }
+    .img_box li { float:left; width:25%; height:100%; background-size:cover; 
+    background-repeat:no-repeat; background-position:center center; }
+    .img_box li.item1 { background-image:url("./img/bg11.jpg"); }
+    .img_box li.item2 { background-image:url("./img/bg12.jpg"); }
+    .img_box li.item3 { background-image:url("./img/bg13.jpg"); }
+    .img_box li.item4 { background-image:url("./img/bg14.jpg"); }
+    .vs_tit_box { width: 1280px; margin:0 auto; }
+    .vs_tit { padding-top:165px; line-height: 2; color:#fff; font-size:36px; 
+    text-shadow:1px 1px 1px #000, -1px -1px 1px #000; margin-left:70px; }
+    .more { float:right; display:block; color:#fff; background:rgba(0,0,0,0.75); 
+    width: 120px; height:40px; line-height:40px; text-align: center; border-radius:34px; 
+    font-size:16px; margin-top:160px; border:2px solid #fff; margin-right:70px; }
+    .btn_box li { position:absolute; top:48%; width: 80px; height:120px; background-color:rgba(0,0,0,0.75); cursor:pointer; }
+    .btn_box li button { display:block; width: 80px; height: 120px; cursor:pointer; 
+     }
+    .btn_box li.prev_btn { left: 0; border-radius:0px 16px 16px 0px; 
+        border:2px solid #fff; border-left:0; }
+    .btn_box li.next_btn { right: 0;  border-radius:16px 0px 0px 16px; border:2px solid #fff; border-right:0; }
+    .btn_box li.prev_btn button { background-image:url("./img/prev_btn.png"); }
+    .btn_box li.next_btn button { background-image:url("./img/next_btn.png"); }
+
+    #collap_menu { position:fixed; left:-130px; top: 90px; z-index:999; width:150px; height:calc(100vh - 90px); background:rgba(0,0,0,0.75); transition:0.5s; }
+    #collap_menu li { line-height:44px; clear:both; }
+    #collap_menu li .qtxt { display:block; padding-left: 28px; font-size:18px; color:#fff; 
+    line-height:44px; cursor:pointer; }
+    #collap_menu:hover { left:0; }
+
+    .lst { width:1200px; height:300px; margin:0 auto; }
+    .lst li { margin:50px; float:left; cursor: pointer; }
+
+    #pop { width: 100vw; height: 100vh; position:fixed; z-index:10000; top: 0; left: 0; 
+    background-color:rgba(0,0,0,0.4); display:none; }
+    .pop_wrap { width: 600px; height: 400px; position:relative; margin:0 auto; top:50%; 
+    margin-top:-200px; }
+    .pop_wrap img { display:block; width: 100%; height:auto; cursor: pointer;  } 
+
+    .tab_area { width: 900px; height:450px; margin:10px auto; background-color:#fff;
+    box-shadow:0px 0px 10px #000; }
+    .tab_btn_box { width: 900px; height: 50px; clear:both; }
+    .tab_btn_box button { display:block; width: 300px; height: 50px; float:left; cursor:pointer;
+    text-align:center; line-height: 50px; color:#333; background:#eee; font-size:16px;}
+    .tab_btn_box button.on { background:#333; color:#fff; }
+    .tab_con_box { clear: both; width: 900px; height:400px; }
+    .tab_con_box .tab_con { display:none; }
+    .tab_con_box .tab_con.on { display:block; }
+
+    .con_wrap { width: 900px; height:auto; margin: 10px auto; opacity:0; margin-top: 500px; transition:0.3s; }
+    .con_wrap.on { opacity:1; margin-top:10px; }
+    </style>
+    <script src="slider.js"></script>
+    <script src="pop.js"></script>
+    <script src="tab.js"></script>
+    <script src="pars.js"></script>
+</head>
+<body>
+<header class="hd">
+    <nav id="gnb">
+        <ul class="menu">
+            <li><a href="">메뉴1</a></li>
+            <li><a href="">메뉴2</a></li>
+            <li><a href="">메뉴3</a></li>
+            <li><a href="">메뉴4</a></li>
+        </ul>
+    </nav>
+</header>
+<section class="page" id="page1">
+    <figure class="vs">
+        <ul class="img_box">
+            <li class="item1">
+                <div class="vs_tit_box">
+                    <h3 class="vs_tit">여기는 배너제목1 입니다.</h3>
+                    <a href="" class="more">MORE</a>
+                </div>
+            </li>
+            <li class="item2">
+                <div class="vs_tit_box">
+                    <h3 class="vs_tit">여기는 배너제목2 입니다.</h3>
+                    <a href="" class="more">MORE</a>
+                </div>
+            </li>
+            <li class="item3">
+                <div class="vs_tit_box">
+                    <h3 class="vs_tit">여기는 배너제목3 입니다.</h3>
+                    <a href="" class="more">MORE</a>
+                </div>
+            </li>
+            <li class="item4">
+                <div class="vs_tit_box">
+                    <h3 class="vs_tit">여기는 배너제목4 입니다.</h3>
+                    <a href="" class="more">MORE</a>
+                </div>
+            </li>
+        </ul>
+        <ul class="btn_box">
+            <li class="prev_btn"><button></button></li>
+            <li class="next_btn"><button></button></li>
+        </ul>  
+    </figure>
+</section>
+<section class="page" id="page2">
+    <div class="page_wrap">
+        <h2 class="page_tit">2페이지제목</h2>
+        <ul class="lst">
+            <li><img src="https://placehold.it/300x200/f0f0f0" alt="배너"></li>
+            <li><img src="https://placehold.it/300x200/fff555" alt="배너"></li>
+            <li><img src="https://placehold.it/300x200/red" alt="배너"></li>
+        </ul>
+    </div>
+</section>
+<section class="page" id="page3">
+    <div class="page_wrap">
+        <h2 class="page_tit">3페이지제목</h2>
+        <div class="tab_area">
+            <div class="tab_btn_box">
+                <button class="tab_btn tab_btn1 on" data-tab="1">탭메뉴1</button>
+                <button class="tab_btn tab_btn2" data-tab="2">탭메뉴2</button>
+                <button class="tab_btn tab_btn3" data-tab="3">탭메뉴3</button>
+            </div>
+            <div class="tab_con_box">
+                <div class="tab_con tab_con1 on">
+                    <img src="https://placehold.it/900x400/333" alt="">
+                </div>
+                <div class="tab_con tab_con2">
+                    <img src="https://placehold.it/900x400/c82" alt="">
+                </div>
+                <div class="tab_con tab_con3">
+                    <img src="https://placehold.it/900x400/19d" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page" id="page4">
+    <div class="page_wrap">
+        <h2 class="page_tit">4페이지제목</h2>
+        <div class="con_wrap">
+            <img src="https://placehold.it/900x500/c80" alt="">    
+        </div>
+    </div>
+</section>
+<section class="page" id="page5">
+    <div class="page_wrap">
+        <h2 class="page_tit">5페이지제목</h2>
+    </div>
+</section>
+<section class="page" id="page6">
+    <div class="page_wrap">
+        <h2 class="page_tit">6페이지제목</h2>
+    </div>
+</section>
+<section class="page" id="page7">
+    <div class="page_wrap">
+        <h2 class="page_tit">7페이지제목</h2>
+    </div>
+</section>
+<section class="page" id="page8">
+    <div class="page_wrap">
+        <h2 class="page_tit">8페이지제목</h2>
+    </div>
+</section>
+<section class="page" id="page9">
+    <div class="page_wrap">
+        <h2 class="page_tit">9페이지제목</h2>
+    </div>
+</section>
+<section class="page" id="page10">
+    <div class="page_wrap">
+        <h2 class="page_tit">10페이지제목</h2>
+    </div>
+</section>
+<nav id="collap_menu">
+    <ul class="menu_wrap">
+        <li class="item1" data-page="1"><span class="qtxt">페이지1</span></li>
+        <li class="item2" data-page="2"><span class="qtxt">페이지2</span></li>
+        <li class="item3" data-page="3"><span class="qtxt">페이지3</span></li>
+        <li class="item4" data-page="4"><span class="qtxt">페이지4</span></li>
+        <li class="item5" data-page="5"><span class="qtxt">페이지5</span></li>
+        <li class="item6" data-page="6"><span class="qtxt">페이지6</span></li>
+        <li class="item7" data-page="7"><span class="qtxt">페이지7</span></li>
+        <li class="item8" data-page="8"><span class="qtxt">페이지8</span></li>
+        <li class="item9" data-page="9"><span class="qtxt">페이지9</span></li>
+        <li class="item10" data-page="10"><span class="qtxt">페이지10</span></li>
+    </ul>
+</nav>
+<div id="pop">
+    <div class="pop_wrap"></div>
+</div>
+</body>
+</html>
